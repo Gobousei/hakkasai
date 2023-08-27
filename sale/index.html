@@ -1,1 +1,38 @@
-aaa
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+        <title>sale</title>
+		<!-- CSS -->
+		<link rel="stylesheet" href="./style.css"/>
+        <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
+	</head>
+	<body>
+        <div id="identication">sale</div>
+        <div id="reader"><input type="checkbox">リーダー</div>
+		<div id="wrapper">
+			<canvas id="canvas"></canvas>
+        </div>
+        <div class="outnumber">
+            <div class="innernumber">
+                <p id="number1">QRコードを読込んでください</p>
+            </div>
+        </div>
+        <div id="result">
+            <p id="success">正しいコードです</p>
+            <p id="number"></p>
+            <button type="button" class="dialogbutton" onclick="register()">受渡</button>
+        </div>
+        <div id="switchout" onclick="help()">
+            ヘルプ
+        </div>
+        <form id="nocode" name="dialog">
+            <p id="error"></p>
+            <button type="button" class="dialogbutton" id="dialogok" name="yes" onclick="none()">OK</button>
+          </form>
+
+		<!-- JavaScript -->
+		<script src="./jsQR.js" defer></script>
+        <script src="./main.js" defer></script> 
+	</body>
+</html>
