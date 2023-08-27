@@ -1,1 +1,52 @@
-aaa
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>売上</title>
+</head>
+<body>
+    <p>チケット販売枚数</p>
+        <p id="sale"></p>
+    <p id="recept">受け渡し数</p>
+        <p id="salt"></p>
+        <p id="cons"></p>
+        <button type="button" onclick="reset()">リセット</button>
+        <script>
+            /**---------------------------------------
+ * --------APIトークンなどの記述------------ */
+const firebaseConfig = {
+	apiKey: "AIzaSyBNhorPJIFWRMi6Pq4NIc8Asi-Iiabb4jI",
+    authDomain: "biology-test-384608.firebaseapp.com",
+    databaseURL: "https://biology-test-384608-default-rtdb.firebaseio.com",
+    projectId: "biology-test-384608",
+    storageBucket: "biology-test-384608.appspot.com",
+    measurementId: "G-R6CEKT1NL2"
+    };
+    firebase.initializeApp(firebaseConfig);
+    var db=firebase.database();
+    db.ref('sold').once('value',function(obj){
+        var sold = obj.val();
+        document.getElementById('salt').innerHTML="塩："+sold.salt;
+        document.getElementById('cons').innerHTML="コンソメ："+sold.cons;
+        document.getElementById('sale').innerHTML=sold.sale;
+    })
+    function reset(){
+        var result = window.confirm('データがすべて消去されます。続行しますか');
+        if(result){
+            db.ref('customer').remove();
+            var saltorder =0;
+            var consorder =0;
+            db.ref('order').update({saltorder,consorder});
+            db.ref('soldlist').remove();
+            var salt =0;
+            var cons = 0;
+            var sale = 0;
+            db.ref('sold').update({salt,cons,sale});
+            location.reload();
+        }
+    }
+        </script>
+</body>
+</html>
