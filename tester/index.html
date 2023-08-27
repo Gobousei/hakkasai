@@ -1,1 +1,32 @@
-aaa
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<!-- CSS -->
+        <title>CodeChecker</title>
+		<link rel="stylesheet" href="./style.css"/>
+        <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
+	</head>
+	<body>
+		<div id="wrapper">
+			<canvas id="canvas"></canvas>
+        </div>
+        <div id="result">
+            <p id="success">正しいコードです</p>
+            <p id="number"></p>
+            <button type="button" class="dialogbutton" onclick="register()">OK</button>
+        </div>
+        <div id="status">
+            <button type="button" class="dialogbutton" onclick="roadqr()">開始</button>
+            <button type="button" class="dialogbutton" onclick="reset()">リセット</button>
+            <button type="button" id="btn-toggle" class="dialogbutton" onclick="change()">切り替え</button>
+        </div>
+        <form id="nocode" name="dialog">
+            <p id="error"></p>
+            <button type="button" class="dialogbutton" name="yes" onclick="none()">OK</button>
+          </form>
+		<!-- JavaScript -->
+		<script src="./jsQR.js" defer></script>
+        <script src="./main.js" defer></script>
+	</body>
+</html>
