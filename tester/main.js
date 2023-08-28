@@ -42,7 +42,7 @@ const firebaseConfig = {
         var identification=parseInt(conversionidentification, firstTwoChars);
         number = parseInt(conversionnumber, firstTwoChars);
         if(identification==20230906){
-            if (checklist.includes(code)) {
+            if (checklist.includes(number)) {
                 return 'sude';
             } else {
                 return "true";
@@ -76,7 +76,7 @@ const firebaseConfig = {
     }
 
     function register(){
-        checklist.push(code);
+        checklist.push(number);
         db.ref('checklist').set(checklist);
         roadqr();
     }
