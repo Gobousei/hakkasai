@@ -45,6 +45,7 @@ const firebaseConfig = {
         }
     })
 
+
     function check(){
         var firstTwoChars = Number(code.slice(0, 2));
         var nextTwoChars = Number(code.slice(2, 4));
@@ -54,7 +55,7 @@ const firebaseConfig = {
         var identification=parseInt(conversionidentification, firstTwoChars);
         number = parseInt(conversionnumber, firstTwoChars);
         if(identification==20230906){
-            if (checklist.includes(code)) {
+            if (checklist.includes(number)) {
                 return 'sude';
             } else {
                 return "true";
@@ -92,7 +93,7 @@ const firebaseConfig = {
     function register(){
         sale = sale + 1;
         db.ref('sold').update({sale});
-        checklist.push(code);
+        checklist.push(number);
         db.ref('checklist').set(checklist);
         roadqr();
     }
