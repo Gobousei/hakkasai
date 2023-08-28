@@ -16,12 +16,16 @@ const firebaseConfig = {
     var select;
     var soldlist=[];
     var consorder;
+    var soldoutcons;
+    var soldoutsalt;
+    var soldout ={};
     var saltorder;
     let video  = document.createElement("video");
     let canvas = document.getElementById("canvas");
     let ctx    = canvas.getContext("2d");
     var facingMode= "user";
     window.onload = roadqr();
+    var customer={};
 
 
     /**-----------------------------------
@@ -86,6 +90,43 @@ const firebaseConfig = {
             document.getElementById('cookout').innerText=obj.val();
         }
     })
+    db.ref('soldout').on('value', function(obj){
+        if(!obj.val()){
+            document.getElementById('soldoutsalt').checked=false;
+            document.getElementById('soldoutcons').checked=false;
+            document.getElementById('falsecons').style.display="block";
+            document.getElementById('falsesalt').style.display="block";
+        }else{
+            var object = obj.val();
+            conssold = object.cons;
+            saltsold = object.salt;
+            soldout = obj.val();
+            if(!conssold){
+                document.getElementById('soldoutcons').checked=false;
+                document.getElementById('falsecons').style.display="block";
+            }
+            if(conssold =="sold"){
+                document.getElementById('soldoutcons').checked=true;
+                document.getElementById('falsecons').style.display="none";
+            }
+            if(!saltsold){
+                document.getElementById('soldoutsalt').checked=false;
+                document.getElementById('falsesalt').style.display="block";
+            }
+            if(saltsold=="sold"){
+                document.getElementById('soldoutsalt').checked=true;
+                document.getElementById('falsesalt').style.display="none";
+            }
+        }
+    })
+
+    db.ref('current/customer').on('value',function(obj){
+        if(!obj.val()){
+            customer = {};
+        }else{
+            customer=obj.val();
+        }
+    })
 
 	function check(){
         var firstTwoChars = Number(code.slice(0, 2));
@@ -96,7 +137,7 @@ const firebaseConfig = {
         var identification=parseInt(conversionidentification, firstTwoChars);
         number = parseInt(conversionnumber, firstTwoChars);
         if(identification==20230906){
-            if (soldlist.includes(code)) {
+            if (soldlist.includes(number)) {
                 return 'sude';
             } else {
                 return "true";
@@ -116,9 +157,9 @@ const firebaseConfig = {
                 mainselector();
             }else{
             var object = obj.val();
-            if (object.hasOwnProperty(code)) {
+            if (object.hasOwnProperty(number)) {
               document.getElementById('number').innerText=number;
-              select = object[code];
+              select = object[number];
               document.getElementById('main').innerText=select;
               document.getElementById('truediv').style.display="block";
             } else {
@@ -148,8 +189,8 @@ const firebaseConfig = {
   }
 
   function sold(){
-    db.ref('current/customer/'+code).remove();
-    soldlist.push(code);
+    db.ref('current/customer/'+number).remove();
+    soldlist.push(number);
     db.ref('soldlist').set(soldlist);
     if(select=='しお'){
         salt = salt+ 1;
@@ -170,7 +211,7 @@ const firebaseConfig = {
   
   function neworder(type){
     var set ={};
-    set[code]= type;
+    set[number]= type;
     db.ref('current/customer').set(set);
     if(type=='しお'){
         saltorder = saltorder+ 1;
@@ -233,5 +274,27 @@ const firebaseConfig = {
                 facingMode="environment";
             }else if(facingMode="environment"){
                 facingMode = "user"
+            }
+        }
+
+        function soldall(type){
+            var whitch = document.getElementById('soldout'+type).checked;
+            if(whitch){
+                var what;
+                if(type=="salt"){
+                    what = "しお"
+                }else if(type=="cons"){
+                    what = "コンソメ"
+                }
+                var result = window.confirm(what+'を売り切れにします');
+                if(result){
+                soldout[type] = "sold";
+                db.ref().update({soldout});
+                }else{
+                    document.getElementById('soldout'+type).checked=false;
+                    alert('キャンセルされました。')
+                }
+            }else{
+                db.ref('soldout/'+type).remove();
             }
         }
