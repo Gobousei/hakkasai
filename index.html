@@ -8,15 +8,66 @@
         a{
             font-size: 30px;
         }
+        .menu{
+            cursor: pointer;
+        position: absolute;
+	    width: 25%;
+	    height: 45%;
+        border-radius: 10vh;
+        border: solid rgb(118, 226, 226);
+        text-align: center;
+        }
+        .menu img{
+            width: 90%;
+            height: 70%;
+        }
+        #menu1{
+            top: 40px;
+        left: 4%;
+        }
+        #menu2{
+            top: 40px;
+        left: 36%;
+        }#menu3{
+            top: 40px;
+        left: 70%;
+        }#menu4{
+            top: 54%;
+        left: 4%;
+        }#menu5{
+            top: 54%;
+        left: 36%;
+        }#menu6{
+            top: 54%;
+        left: 70%;
+        }
     </style>
 </head>
 <body>
-    <h1>白華祭用自動応対</h1><br>
-    <a href="./master/index.html">有人受付</a><br>
-    <a href="./receptor/index.html">自動受付</a><br>
-    <a href="./sale/index.html">券売</a><br>
-    <a href="./order/index.html">オーダー</a><br>
-    <a href="./analytics/index.html">売上</a><br>
-    <a href="./tester/index.html">コードテスター</a><br>
+    <p>白華祭用自動応対</p><br>
+    <div class="menu" id="menu1" onclick="location.href='./master/index.html'">
+        <p>有人受付</p>
+        <img src="./img/rege.png" >
+    </div>
+    <div class="menu" id="menu2" onclick="location.href='./receptor/index.html'">
+        <p>無人受付</p>
+        <img src="./img/phone.png">
+    </div>
+    <div class="menu" id="menu3" onclick="location.href='./sale/index.html'">
+        <p>券売</p>
+        <img src="./img/sale.png">
+    </div>
+    <div class="menu" id="menu4" onclick="location.href='./order/index.html'">
+        <p>オーダー</p>
+        <img src="./img/store.png">
+    </div>
+    <div class="menu" id="menu5" onclick="location.href='./analytics/index.html'">
+        <p>売上</p>
+        <img src="./img/bunseki.png">
+    </div>
+    <div class="menu" id="menu6" onclick="location.href='./tester/index.html'">
+        <p>コードテスター</p>
+        <img src="./img/kensa.png">
+    </div>
 </body>
 </html>
