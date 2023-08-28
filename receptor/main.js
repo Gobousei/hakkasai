@@ -14,7 +14,10 @@ const firebaseConfig = {
     var number;
     var code;
     var select;
+    var customer={};
     var soldlist=[];
+    var soldoutcons;
+    var soldoutsalt;
     var consorder;
     var saltorder;
     let video  = document.createElement("video");
@@ -51,6 +54,38 @@ const firebaseConfig = {
             saltorder=Number(obj.val());
         }
     })
+
+    db.ref('current/customer').on('value',function(obj){
+        if(!obj.val()){
+            customer = {};
+        }else{
+            customer=obj.val();
+        }
+    })
+
+    db.ref('soldout').on('value', function(obj){
+        if(!obj.val()){
+            document.getElementById('falsecons').style.display="block";
+            document.getElementById('falsesalt').style.display="block";
+        }else{
+            var object = obj.val();
+            conssold = object.cons;
+            saltsold = object.salt;
+            soldout = obj.val();
+            if(!conssold){
+                document.getElementById('falsecons').style.display="block";
+            }
+            if(conssold =="sold"){
+                document.getElementById('falsecons').style.display="none";
+            }
+            if(!saltsold){
+                document.getElementById('falsesalt').style.display="block";
+            }
+            if(saltsold=="sold"){
+                document.getElementById('falsesalt').style.display="none";
+            }
+        }
+    })
     
 
 	function check(){
@@ -62,7 +97,7 @@ const firebaseConfig = {
         var identification=parseInt(conversionidentification, firstTwoChars);
         number = parseInt(conversionnumber, firstTwoChars);
         if(identification==20230906){
-            if (soldlist.includes(code)) {
+            if (soldlist.includes(number)) {
                 return 'sude';
             } else {
                 return "true";
@@ -82,9 +117,9 @@ const firebaseConfig = {
                 mainselector();
             }else{
             var object = obj.val();
-            if (object.hasOwnProperty(code)) {
+            if (object.hasOwnProperty(number)) {
               document.getElementById('number').innerText='注文済みです';
-              select = object[code];
+              select = object[number];
               document.getElementById('main').innerText=select;
               document.getElementById('truediv').style.display="block";
               setTimeout( 
@@ -131,9 +166,8 @@ const firebaseConfig = {
 
   function neworder(){
     document.getElementById('confirm').style.display='none';
-    var set ={};
-    set[code]= type;
-    db.ref('current/customer').set(set);
+    customer[number]= type;
+    db.ref('current/customer').set(customer);
     if(type=='しお'){
         saltorder = saltorder+ 1;
         db.ref('order').update({saltorder});
