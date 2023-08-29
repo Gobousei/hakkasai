@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<!-- CSS -->
+		<link rel="stylesheet" href="./style.css"/>
+        <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
+        <style>
+            #truediv{
+                display: block;
+            }
+    .solt {
+	display: block;
+	text-align: center;
+	text-decoration: none;
+	width: 250px;
+	margin: auto;
+	padding: 1rem 4rem;
+	font-weight: bold;
+	font-size: 50px;
+	border: 2px solid #fff;
+	background: #49c0e7;
+	color: #fff;
+	border-radius: 100vh;
+	transition: 0.5s;
+	margin-top: -20px;
+    cursor: pointer;
+}
+.solt:hover {
+	color: #49c0e7;
+	background: #fff;
+	border: 2px solid #49c0e7;
+}
+    .cons {
+	display: block;
+	text-align: center;
+	text-decoration: none;
+	width: 250px;
+	margin: auto;
+	padding: 1rem 4rem;
+	font-weight: bold;
+	font-size: 50px;
+	border: 2px solid #fff;
+	background: rgb(197, 82, 82);
+	color: #fff;
+	border-radius: 100vh;
+	transition: 0.5s;
+	margin-top: 20px;
+    cursor: pointer;
+}
+.cons:hover {
+	color: rgb(197, 82, 82);
+	background: #fff;
+	border: 2px solid rgb(197, 82, 82);
+}
+        </style>
+	</head>
+	<body>
+		<div id="wrapper">
+            video
+            <video id="video" autoplay muted playsinline></video>
+            <canvas id="camera-canvas"></canvas>
+            <canvas id="rect-canvas"></canvas>
+        </div>
+        <div class="outnumber">
+            <div class="innernumber">
+                <p id="number">number</p>
+            </div>
+        </div>
+        <div class="mainout">
+            <div id="falsediv">
+                <a onclick="" class="solt">しお</a>
+                <a onclick="" class="cons">コンソメ</a>
+            </div>
+        </div>
+        <div class="switchout">
+            switch
+        </div>
+        <form id="dialog" name="dialog">
+            <p>不正なコードです</p>
+            <input type="button" class="dialogbutton" name="yes" value="OK" />
+          </form>
+		<!-- JavaScript -->
+		<script src="./jsQR.js" defer></script>
+        <script src="./main.js" defer></script> 
+	</body>
+</html>
