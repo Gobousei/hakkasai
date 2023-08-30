@@ -169,7 +169,6 @@ const firebaseConfig = {
         salt = salt+ 1;
         db.ref('sold').update({salt});
         saltorder = saltorder - 1;
-        console.log(saltorder);
         db.ref('order').update({saltorder});
     }else if(selector=='コンソメ'){
         cons = cons+1;
@@ -218,7 +217,6 @@ const firebaseConfig = {
             db.ref('register/'+hostnumber+'/order').on('value',function (obj){
             truediv.style.display='none';
             order= obj.val();
-            console.log(order);
             if(!order){
                 numberp.innerText= 'コード読み取り中';
             }else{
@@ -229,7 +227,6 @@ const firebaseConfig = {
                     }else{
                         numberp.innerText = order;
                         truediv.style.display='block';
-                        console.log(selector);
                         orderp.innerText=selector;
                     }
                 })
