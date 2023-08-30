@@ -46,6 +46,7 @@ const firebaseConfig = {
             db.ref('sold').update({salt,cons,sale});
             db.ref('checklist').remove();
             db.ref('current').remove();
+            db.ref('register').remove();
             location.reload();
         }
     }
