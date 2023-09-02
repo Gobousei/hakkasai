@@ -201,7 +201,6 @@ const firebaseConfig = {
     document.getElementById('falsediv').style.display="none";
     document.getElementById('readbutton').style.display="block";
 
-    canvas.style.display = 'none';
     wrapper.style.display ='none';
     clearInterval(timerId);
   }
@@ -210,7 +209,6 @@ const firebaseConfig = {
     wrapper.style.display='block';
     document.getElementById('falsediv').style.display="none";
     document.getElementById("nocode").style.display="none";
-    canvas.style.display = 'block';
         const userMedia = {video: {facingMode}};
         navigator.mediaDevices.getUserMedia(userMedia).then((stream)=>{
             video.srcObject = stream;
@@ -224,7 +222,6 @@ const firebaseConfig = {
                     let img = ctx.getImageData(0, 0, canvas.width, canvas.height);
                     let qcode = jsQR(img.data, img.width, img.height, {inversionAttempts: "dontInvert"});
                     if(qcode){
-                        canvas.style.display = 'none';
                         wrapper.style.display ='none';
                         document.getElementById('readbutton').style.display='none';
                         drawRect(qcode.location);// Rect
