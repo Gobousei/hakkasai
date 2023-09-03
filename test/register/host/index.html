@@ -1,1 +1,48 @@
-aaa
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+        <title>master</title>
+		<!-- CSS -->
+		<link rel="stylesheet" href="./style.css"/>
+        <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
+	</head>
+	<body>
+        <div id="identication">しお</div>
+        <div id="reader"><input type="checkbox" id="soldoutsalt" onchange="soldall('salt')">売切</div>
+        <div id="checklabel">コンソメ</div>
+        <div id="reader2"><input type="checkbox" id="soldoutcons" onchange="soldall('cons')">売切</div>
+		<div id="wrapper">
+			<canvas id="canvas"></canvas>
+        </div>
+        <div class="outnumber">
+            <div class="innernumber">
+                <p id="number">受付機</p>
+            </div>
+        </div>
+        <div class="mainout">
+            <div id="truediv">
+                <p id="main"></p>
+                <a onclick="sold()" class="btn_03">受渡し</a>
+            </div>
+
+            <div id="readbutton">
+                <p id="mainbutton" onclick="roadqr()">QRコードを読み込み</button>
+            </div>
+            
+        </div>
+        <div id="checkout">
+            ヘルプ
+        </div>
+        <div id="cookout">
+            ヘルプ
+        </div>
+        <form id="nocode" name="dialog">
+            <p id="error"></p>
+            <input type="button" class="dialogbutton" name="yes" value="OK" />
+          </form>
+		<!-- JavaScript -->
+		<script src="./jsQR.js" defer></script>
+        <script src="./main.js" defer></script> 
+	</body>
+</html>
