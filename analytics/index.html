@@ -12,6 +12,7 @@
     <p id="recept">受け渡し数</p>
         <p id="salt"></p>
         <p id="cons"></p>
+        <p id="list"></p>
         <button type="button" onclick="reset()">リセット</button>
         <script>
             /**---------------------------------------
@@ -26,6 +27,15 @@ const firebaseConfig = {
     };
     firebase.initializeApp(firebaseConfig);
     var db=firebase.database();
+    
+    db.ref('soldlist').once('value',function(obj){
+        var soldlist=obj.val();
+        for (var i = 0; i < soldlist.length; i++) { 
+    var todoList = document.createElement('li'); 
+    todoList.textContent = soldlist[i];
+    document.getElementById('list').appendChild(todoList); 
+}
+    })
     db.ref('sold').once('value',function(obj){
         var sold = obj.val();
         document.getElementById('salt').innerHTML="塩："+sold.salt;
@@ -33,8 +43,8 @@ const firebaseConfig = {
         document.getElementById('sale').innerHTML=sold.sale;
     })
     function reset(){
-        var result = window.confirm('データがすべて消去されます。続行しますか');
-        if(result){
+        var password = window.prompt('パスワードを入力してください','');
+        if(password=='hakkasai'){
             db.ref('customer').remove();
             var saltorder =0;
             var consorder =0;
@@ -48,6 +58,8 @@ const firebaseConfig = {
             db.ref('current').remove();
             db.ref('register').remove();
             location.reload();
+        }else{
+            alert('パスワードが違います')
         }
     }
         </script>
