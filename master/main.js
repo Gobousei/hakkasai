@@ -23,7 +23,7 @@ const firebaseConfig = {
     let video  = document.createElement("video");
     let canvas = document.getElementById("canvas");
     let ctx    = canvas.getContext("2d");
-    var facingMode= "user";
+    var facingMode= "environment";
     window.onload = roadqr();
     var customer={};
 
