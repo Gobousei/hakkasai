@@ -220,3 +220,15 @@ a.btn_03:hover {
 	right: 0;
 	cursor: pointer;
 }
+
+#frame{
+	width: 400px;
+	height: 400px;
+	border-radius: 50px;
+	border: dashed red;
+	/* 水平・垂直方向の中央揃え */
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -200px 0 0 -200px;
+	}
