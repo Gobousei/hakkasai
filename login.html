@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ログインページ</title>
+    <style>
+        #center{
+            width: 250px;
+  height: 250px;
+  background-color: red;
+  /* 水平・垂直方向の中央揃え */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -125px 0 0 -125px;
+  text-align:center;
+        }
+    </style>
+</head>
+<body>
+    白華祭自動応答
+    <div id="center">
+        <p id="centerp">パスワードを入力してください。</p>
+        <input type="password" id="password"><br><br>
+        <button type="button" id="submitbutton" onclick="submit()">ログイン</button>
+    </div>
+    <script>
+        function submit(){
+            var input = document.getElementById('password').value;
+            if(input=='risuka'){
+                localStorage.setItem('hakkasai-pass','loggedin');
+                setTimeout(window.history.go( -1 ), 100)
+            }else{
+                alert('パスワードが違います。');
+            }
+        }
+    </script>
+</body>
+</html>
