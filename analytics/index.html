@@ -15,6 +15,12 @@
         <p id="list"></p>
         <button type="button" onclick="reset()">リセット</button>
         <script>
+
+        var password = localStorage.getItem('hakkasai-pass');
+                if(password!='loggedin'){
+            window.open('../login.html','_self');
+                }
+            
             /**---------------------------------------
  * --------APIトークンなどの記述------------ */
 const firebaseConfig = {
