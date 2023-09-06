@@ -6,6 +6,13 @@
 		<!-- CSS -->
 		<link rel="stylesheet" href="./style.css"/>
         <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
+
+    <script>
+        var password = localStorage.getItem('hakkasai-pass');
+                if(password!='loggedin'){
+            window.open('../login.html','_self');
+                }
+            </script>
 	</head>
 	<body>
         <div id="identication">しお</div>
