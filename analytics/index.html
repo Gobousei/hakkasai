@@ -5,15 +5,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>売上</title>
+    <style>
+        #salt-sale{
+            font-size: 100px;
+            text-align: center;
+        width: 50%;
+        height:100vh;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+	    background: #49c0e7;
+        color: #fff;
+    }
+    #cons-sale{
+            font-size: 100px;
+            text-align: center;
+        width: 50%;
+        height:100vh;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+	    background: rgb(197, 82, 82);
+        color: #fff;   
+    }
+    
+    #list{
+            font-size: 20px;
+        width: 100%;
+        position: absolute;
+        top: 100vh;
+        right: 0px;
+    }
+    #recept{
+        text-align: center;
+        padding-top: 15px;
+        position:absolute;
+        top: -20px;
+        left: 0;
+        width: 100px;
+        height: 35px;
+        background-color: black;
+        color: #fff;
+        z-index: 100;
+    }
+    #reset{
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100px;
+        height: 50px;
+        z-index: 100;
+    }
+    </style>
 </head>
 <body>
-    <p>チケット販売枚数</p>
-        <p id="sale"></p>
-    <p id="recept">受け渡し数</p>
-        <p id="salt"></p>
-        <p id="cons"></p>
-        <p id="list"></p>
-        <button type="button" onclick="reset()">リセット</button>
+    <p id="recept">売上</p>
+    <div id="salt-sale">
+        <p>塩</p>
+        <p id="salt"class="count-up"></p>
+    </div>
+    <div id="cons-sale">
+        <p>コンソメ</p>
+        <p id="cons"class="count-up"></p>
+    </div>
+        <p id="list"class="count-up"></p>
+        <button type="button" id="reset" onclick="reset()">リセット</button>
         <script>
 
         var password = localStorage.getItem('hakkasai-pass');
@@ -44,9 +100,8 @@ const firebaseConfig = {
     })
     db.ref('sold').once('value',function(obj){
         var sold = obj.val();
-        document.getElementById('salt').innerHTML="塩："+sold.salt;
-        document.getElementById('cons').innerHTML="コンソメ："+sold.cons;
-        document.getElementById('sale').innerHTML=sold.sale;
+        document.getElementById('salt').innerHTML=sold.salt;
+        document.getElementById('cons').innerHTML=sold.cons;
     })
     function reset(){
         var password = window.prompt('パスワードを入力してください','');
