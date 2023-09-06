@@ -48,6 +48,13 @@
         left: 36%;
     }
     </style>
+    <script>
+
+var password = localStorage.getItem('hakkasai-pass');
+        if(password!='loggedin'){
+            window.open('./login.html','_self');
+        }
+    </script>
 </head>
 <body>
     <p>白華祭用自動応対</p><br>
