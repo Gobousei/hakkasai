@@ -20,23 +20,23 @@
 ## 実際のページ
 [ページ](https://gobousei.github.io/hakkasai)
 
-パスワード入力を求められます。パスワードは、 *「risuka」* です。
+パスワード入力を求められます。パスワードは、 *「risuka」* 。
 
 ## 使い方
-この[フォルダ](https://github.com/Gobousei/hakkasai/tree/main/how-to-use)にまとめてあります。
+この[フォルダ](https://github.com/Gobousei/hakkasai/tree/main/how-to-use)にまとめてある。
 
 ## 使用したサードパーティ製品
-このシステムの作成に際して、[Firebase Realtime Database](https://firebase.google.com/?hl=ja)、[Github (Github pages)](https://github.com)、[JSQR](https://github.com/cozmo/jsQR)を使用しました。
+このシステムの作成に際して、[Firebase Realtime Database](https://firebase.google.com/?hl=ja)、[Github (Github pages)](https://github.com)、[JSQR](https://github.com/cozmo/jsQR)を使用した。
 
 ### Firebase Realtime Database
-Firebase Realtime Database は、Googleが提供するNoSQLデータベースで、JSON形式でデータを保存でき、使用が簡単であること、データ変更時に端末側の任意のプログラムを実行させることができることから、使用しました。
+Firebase Realtime Database は、Googleが提供するNoSQLデータベースで、JSON形式でデータを保存でき、使用が簡単であること、データ変更時に端末側の任意のプログラムを実行させることができることから使用した。
 
 ### Github (Github pages)
-Githubは、Microsoftが提供するオープンソース開発プラットフォームで、コードを保存できる他、Github pagesという機能で、静的ページを公開することができることから、使用しました。
-Github pages では、静的ページしか公開できないことから、このシステムで使用したプログラミング言語はJavaScriptのみです。
+Githubは、Microsoftが提供するオープンソース開発プラットフォームで、コードを保存できる他、Github pagesという機能で静的ページを公開することができることから使用した。
+Github pages では静的ページしか公開できないことから、このシステムで使用したプログラミング言語はJavaScriptのみ。
 
 ### JSQR
-JSQRは、JavaScriptで2次元コードを読み込むためのライブラリです。
+JSQRは、JavaScriptで2次元コードを読み込むためのライブラリ。
 
 # 工夫点
 ## Firebase Realtime Databaseの使用
@@ -47,7 +47,7 @@ QRコードに直接番号を記載すると、偽造が容易になる他、コ
 
 例： *2905SHEMD2* ▶番号：2
 #### 上二桁
-上二桁には、5桁目から先に表記された基数を表記する。（10~32進数。11進数からにしたほうが良かった気もする。）
+上二桁には、五桁目以降の表記された基数を二桁、10進数で表記する。（10~32進数。11進数からにしたほうが良かった気もする。）
 
 上の例だと、29となっているので、SHEMD2は29進数で表記されている。
 
