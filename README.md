@@ -30,11 +30,11 @@ Firebase Realtime Database は、Googleが提供するNoSQLデータベースで
 Githubは、Microsoftが提供するオープンソース開発プラットフォームで、コードを保存できる他、Github pagesという機能で、静的ページを公開することができることから、使用しました。
 Github pages では、静的ページしか公開できないことから、このシステムで使用したプログラミング言語はJavaScriptのみです。
 
-## 工夫点
+# 工夫点
 ## Firebase Realtime Databaseの使用
 Firebase Realtime Database　はデータ変更時にプログラムを実行できることから、これをトリガーとしてJavaScriptの関数を実行させ、サーバーレスでの開発を行った。
 
-### コードの暗号化
+## コードの暗号化
 QRコードに直接番号を記載すると、偽造が容易になる他、信頼性が低下するため、QRコードには暗号化を施した。販売は終了したので、暗号ルールを公開する。
 
 例： *2905SHEMD2* ▶番号：2
