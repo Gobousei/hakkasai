@@ -12,7 +12,7 @@
 
 ## 実際のページ
 [ページ](https://gobousei.github.io/hakkasai)
-パスワード入力を求められます。パスワードは、*「risuka」*です。
+パスワード入力を求められます。パスワードは、 *「risuka」* です。
 
 ## 使用したサードパーティ製品
 このシステムの作成に際して、[Firebase Realtime Database](https://firebase.google.com/?hl=ja)、[Github (Github pages)](https://github.com)を使用しました。
