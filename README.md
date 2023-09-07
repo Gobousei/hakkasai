@@ -2,6 +2,8 @@
 ## 目的
 ・白華祭の模擬店で、画期的なシステムを。
 
+・Chrome bookの性能、制約がどうであれ、アイデア次第で何でもできることを1,2年生に示し、白華祭を創意工夫の場としてほしい。
+
 ## 機能
 システムの持つ機能です。
 
@@ -24,7 +26,7 @@
 この[フォルダ](https://github.com/Gobousei/hakkasai/tree/main/how-to-use)にまとめてあります。
 
 ## 使用したサードパーティ製品
-このシステムの作成に際して、[Firebase Realtime Database](https://firebase.google.com/?hl=ja)、[Github (Github pages)](https://github.com)を使用しました。
+このシステムの作成に際して、[Firebase Realtime Database](https://firebase.google.com/?hl=ja)、[Github (Github pages)](https://github.com)、[JSQR](https://github.com/cozmo/jsQR)を使用しました。
 
 ### Firebase Realtime Database
 Firebase Realtime Database は、Googleが提供するNoSQLデータベースで、JSON形式でデータを保存でき、使用が簡単であること、データ変更時に端末側の任意のプログラムを実行させることができることから、使用しました。
@@ -32,6 +34,9 @@ Firebase Realtime Database は、Googleが提供するNoSQLデータベースで
 ### Github (Github pages)
 Githubは、Microsoftが提供するオープンソース開発プラットフォームで、コードを保存できる他、Github pagesという機能で、静的ページを公開することができることから、使用しました。
 Github pages では、静的ページしか公開できないことから、このシステムで使用したプログラミング言語はJavaScriptのみです。
+
+### JSQR
+JSQRは、JavaScriptで2次元コードを読み込むためのライブラリです。
 
 # 工夫点
 ## Firebase Realtime Databaseの使用
@@ -60,3 +65,10 @@ QRコードに直接番号を記載すると、偽造が容易になる他、信
 勘合コードより下の桁には、通し番号が一、二桁目で表記された基数で表記されている。この番号を、Realtime Databaseの受渡しリストと照合し、重複の無いことを確認する。
 
 上の例だと、2。
+
+## 改善点
+### 注文数表示
+注文数を表示する際、データベースにそれぞれの個数を表記していたが、注文リストを数えたほうがエラーはなかった。
+
+### ファイル配置
+このシステムでは、ほとんどすべてのフォルダにJSQR,Style.cssを設置しているが、一つにまとめたほうが良かったと思う。
