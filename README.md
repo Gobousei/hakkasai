@@ -48,9 +48,9 @@
 
 ├── test
 
-│   ├── receptor   ・・・事前注文機（カメラ起動ボタンあり）
+│　　├── receptor   ・・・事前注文機（カメラ起動ボタンあり）
 
-│   └── register   ・・・有人受付（カメラ起動ボタンあり）
+│　　└── register   ・・・有人受付（カメラ起動ボタンあり）
 
 │　　　　├── host   ・・・有人受付（店員側）
 
@@ -61,6 +61,7 @@
 ├── index.html     ・・・インデックスページ
 
 └── login.html     ・・・ログインページ
+
 
 ## 使用したサードパーティ製品
 このシステムの作成に際して、[Firebase Realtime Database](https://firebase.google.com/?hl=ja)、[Github (Github pages)](https://github.com)、[JSQR](https://github.com/cozmo/jsQR)を使用した。
