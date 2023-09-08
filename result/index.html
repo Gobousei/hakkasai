@@ -1,1 +1,128 @@
-re
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>売上</title>
+    <style>
+        #salt-sale{
+            font-size: 100px;
+            text-align: center;
+        width: 50%;
+        height:100vh;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+	    background: #49c0e7;
+        color: #fff;
+    }
+    #cons-sale{
+            font-size: 100px;
+            text-align: center;
+        width: 50%;
+        height:100vh;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+	    background: rgb(197, 82, 82);
+        color: #fff;   
+    }
+    
+    #list{
+            font-size: 20px;
+        width: 100%;
+        position: absolute;
+        top: 100vh;
+        right: 0px;
+    }
+    #recept{
+        text-align: center;
+        padding-top: 15px;
+        position:absolute;
+        top: -20px;
+        left: 0;
+        width: 100px;
+        height: 35px;
+        background-color: black;
+        color: #fff;
+        z-index: 100;
+    }
+    #reset{
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100px;
+        height: 50px;
+        z-index: 100;
+    }
+    </style>
+</head>
+<body>
+    <p id="recept">売上</p>
+    <div id="salt-sale">
+        <p>塩</p>
+        <p id="salt"class="count-up"></p>
+    </div>
+    <div id="cons-sale">
+        <p>コンソメ</p>
+        <p id="cons"class="count-up"></p>
+    </div>
+        <p id="list"class="count-up"></p>
+        <button type="button" id="reset" onclick="reset()">リセット</button>
+        <script>
+
+        var password = localStorage.getItem('hakkasai-pass');
+                if(password!='loggedin'){
+            window.open('../login.html','_self');
+                }
+            
+            /**---------------------------------------
+ * --------APIトークンなどの記述------------ */
+const firebaseConfig = {
+	apiKey: "AIzaSyBNhorPJIFWRMi6Pq4NIc8Asi-Iiabb4jI",
+    authDomain: "biology-test-384608.firebaseapp.com",
+    databaseURL: "https://biology-test-384608-default-rtdb.firebaseio.com",
+    projectId: "biology-test-384608",
+    storageBucket: "biology-test-384608.appspot.com",
+    measurementId: "G-R6CEKT1NL2"
+    };
+    firebase.initializeApp(firebaseConfig);
+    var db=firebase.database();
+    
+    db.ref('soldlist').once('value',function(obj){
+        var soldlist=obj.val();
+        for (var i = 0; i < soldlist.length; i++) { 
+    var todoList = document.createElement('li'); 
+    todoList.textContent = soldlist[i];
+    document.getElementById('list').appendChild(todoList); 
+}
+    })
+    db.ref('sold').once('value',function(obj){
+        var sold = obj.val();
+        document.getElementById('salt').innerHTML=sold.salt;
+        document.getElementById('cons').innerHTML=sold.cons;
+    })
+    function reset(){
+        var password = window.prompt('パスワードを入力してください','');
+        if(password=='hakkasai'){
+            db.ref('customer').remove();
+            var saltorder =0;
+            var consorder =0;
+            db.ref('order').update({saltorder,consorder});
+            db.ref('soldlist').remove();
+            var salt =0;
+            var cons = 0;
+            var sale = 0;
+            db.ref('sold').update({salt,cons,sale});
+            db.ref('checklist').remove();
+            db.ref('current').remove();
+            db.ref('register').remove();
+            location.reload();
+        }else{
+            alert('パスワードが違います')
+        }
+    }
+        </script>
+</body>
+</html>
