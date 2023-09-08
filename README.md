@@ -25,6 +25,28 @@
 ## 使い方
 この[フォルダ](https://github.com/Gobousei/hakkasai/tree/main/how-to-use)にまとめてある。
 
+## ファイル配置
+
+このシステムのファイルを抜粋して説明する。カメラを常時起動しておくと、読み取りミスが多発するため、当日はカメラ起動ボタンを設置したものを使用した。
+実際に表示したファイルは各フォルダのindex.htmlで、test.htmlは試作としてアップロードしたもの。
+
+.
+├── img            ・・・indexページの画像
+├── master         ・・・手動受付（カメラ常時起動）
+├── order          ・・・注文数表示
+├── receptor       ・・・自動注文機（カメラ常時起動）
+├── register       ・・・有人受付（カメラ常時起動）＊子フォルダ省略
+├── result         ・・・売上表示
+├── sale           ・・・券売
+├── test
+│   ├── receptor   ・・・事前注文機（カメラ起動ボタンあり）
+│   └── register   ・・・有人受付（カメラ起動ボタンあり）
+│       ├── host   ・・・有人受付（店員側）
+│       └── client ・・・有人受付（お客さん側） 
+├── tester         ・・・QRコードのテスト
+├── index.html     ・・・インデックスページ
+└── login.html     ・・・ログインページ
+
 ## 使用したサードパーティ製品
 このシステムの作成に際して、[Firebase Realtime Database](https://firebase.google.com/?hl=ja)、[Github (Github pages)](https://github.com)、[JSQR](https://github.com/cozmo/jsQR)を使用した。
 
