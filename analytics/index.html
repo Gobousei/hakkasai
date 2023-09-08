@@ -62,11 +62,11 @@
     <p id="recept">売上</p>
     <div id="salt-sale">
         <p>塩</p>
-        <p id="salt"class="count-up"></p>
+        <p id="salt"class="count-up">327</p>
     </div>
     <div id="cons-sale">
         <p>コンソメ</p>
-        <p id="cons"class="count-up"></p>
+        <p id="cons"class="count-up">144</p>
     </div>
         <p id="list"class="count-up"></p>
         <button type="button" id="reset" onclick="reset()">リセット</button>
@@ -76,49 +76,10 @@
                 if(password!='loggedin'){
             window.open('../login.html','_self');
                 }
-            
-            /**---------------------------------------
- * --------APIトークンなどの記述------------ */
-const firebaseConfig = {
-	apiKey: "AIzaSyBNhorPJIFWRMi6Pq4NIc8Asi-Iiabb4jI",
-    authDomain: "biology-test-384608.firebaseapp.com",
-    databaseURL: "https://biology-test-384608-default-rtdb.firebaseio.com",
-    projectId: "biology-test-384608",
-    storageBucket: "biology-test-384608.appspot.com",
-    measurementId: "G-R6CEKT1NL2"
-    };
-    firebase.initializeApp(firebaseConfig);
-    var db=firebase.database();
-    
-    db.ref('soldlist').once('value',function(obj){
-        var soldlist=obj.val();
-        for (var i = 0; i < soldlist.length; i++) { 
-    var todoList = document.createElement('li'); 
-    todoList.textContent = soldlist[i];
-    document.getElementById('list').appendChild(todoList); 
-}
-    })
-    db.ref('sold').once('value',function(obj){
-        var sold = obj.val();
-        document.getElementById('salt').innerHTML=sold.salt;
-        document.getElementById('cons').innerHTML=sold.cons;
-    })
     function reset(){
         var password = window.prompt('パスワードを入力してください','');
         if(password=='hakkasai'){
-            db.ref('customer').remove();
-            var saltorder =0;
-            var consorder =0;
-            db.ref('order').update({saltorder,consorder});
-            db.ref('soldlist').remove();
-            var salt =0;
-            var cons = 0;
-            var sale = 0;
-            db.ref('sold').update({salt,cons,sale});
-            db.ref('checklist').remove();
-            db.ref('current').remove();
-            db.ref('register').remove();
-            location.reload();
+            alert('この機能は消しました。')
         }else{
             alert('パスワードが違います')
         }
