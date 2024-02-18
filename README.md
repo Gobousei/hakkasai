@@ -21,6 +21,8 @@
 
 パスワード入力を求められます。パスワードは、 *「risuka」* 。
 
+[QRコード](https://docs.google.com/spreadsheets/d/1OjZY7_m_vCvVcmYsZZW48bt87MewUzx_GRSmZX0bk8s/edit?usp=drivesdk)
+
 ## 使い方
 この[フォルダ](https://github.com/Gobousei/hakkasai/tree/main/how-to-use)にまとめてある。
 
